@@ -1,0 +1,25 @@
+{
+  "name": "angular2-webpack-min",
+  "version": "1.0.0",
+  "description": "Minimalistic project setup for Angular 2 projects running using Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular2",
+    "webpack",
+    "typescript"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranostaj/angular2-webpack-min.git"
+  },
+  "author": "Jan Ranostaj <jan.ranostaj@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ranostaj/angular2-webpack-min/issues"
+  },
+  "homepage": "https://github.com/ranostaj/angular2-webpack-min#readme"
+}
