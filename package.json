@@ -4,14 +4,13 @@
   "description": "Minimalistic project setup for Angular 2 projects running using Webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --inline"
   },
   "keywords": [
     "angular2",
     "webpack",
     "typescript"
   ],
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ranostaj/angular2-webpack-min.git"
@@ -45,10 +44,12 @@
     "angular2-template-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.4",
     "concurrently": "^3.0.0",
+    "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.0",
     "lite-server": "^2.2.2",
+    "raw-loader": "^0.5.1",
     "typescript": "^2.0.3",
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.9"
   }
 }
