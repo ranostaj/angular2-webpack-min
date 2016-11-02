@@ -48,6 +48,6 @@ module.exports = {
 
     devServer: {
         outputPath: __dirname + "/build",
-        port: 9000
+        port: 3000
     }
 }
