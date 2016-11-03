@@ -4,15 +4,21 @@ const webpack = require('webpack');
 
 module.exports = {
 
-  //context: __dirname + "/app",
+  /**
+   * Set out context directory
+   */
+  context: __dirname + "/app",
+
   resolve: {
     extensions: ['.ts', '.js', '.json', '.scss'],
     modules: [__dirname + "/app", 'node_modules']
   },
+
+
   entry: {
-    'polyfills' : './app/polyfills.ts',
-    'vendors' : './app/vendors.ts',
-    'app': './app/main.ts'
+    'polyfills' : './polyfills.ts',
+    'vendors' : './vendors.ts',
+    'app': './main.ts'
   },
 
   output: {
@@ -24,8 +30,19 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader','angular2-template-loader'],
+        use: ['angular2-template-loader', 'awesome-typescript-loader'],
         exclude: [/node_modules/]
+      },
+
+      /**
+       * Loading SASS styles to get it in a string format for Component styleUrls array
+       * Notice we are not using style-loader here as Angular2 embeds styles directly into Components instead into <head>
+       * This is done through ViewEncapsulation feature
+       *
+       */
+      {
+        test: /\.scss$/,
+        use: ['raw', 'sass']
       },
       {
         test: /\.html$/,
@@ -36,7 +53,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app/index.html',
+      template: './index.ejs',
       title: 'Angular 2 - Webpack minimal',
       inject: 'body'
     }),
@@ -44,11 +61,9 @@ module.exports = {
          name: ['app', 'vendor', 'polyfills']
      }),
     new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      __dirname + '/app' // location of your src
-    ),
-
+      __dirname
+    )
   ],
 
     devServer: {
