@@ -4,21 +4,20 @@ const webpack = require('webpack');
 
 module.exports = {
 
-   context: __dirname + "/app",
+  //context: __dirname + "/app",
   resolve: {
-    extensions: ['.ts', '.min.js', '.js', '.json', '.scss'],
-    modules: [__dirname + "/app", 'node_modules'],
+    extensions: ['.ts', '.js', '.json', '.scss'],
+    modules: [__dirname + "/app", 'node_modules']
   },
   entry: {
-    'polyfills' : './polyfills.ts',
-    'vendors' : './vendors.ts',
-    'app': './main.ts'
+    'polyfills' : './app/polyfills.ts',
+    'vendors' : './app/vendors.ts',
+    'app': './app/main.ts'
   },
 
   output: {
     path: __dirname + '/build',
-    filename: '[name].bundle.js',
-    publicPath: 'http://localhost:9000'
+    filename: '[name].bundle.js'
   },
 
   module: {
@@ -30,24 +29,29 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader'
+        loader: 'raw'
       }
     ]
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './app/index.html',
       title: 'Angular 2 - Webpack minimal',
       inject: 'body'
     }),
      new  webpack.optimize.CommonsChunkPlugin({
          name: ['app', 'vendor', 'polyfills']
-     })
+     }),
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname + '/app' // location of your src
+    ),
+
   ],
 
     devServer: {
-        outputPath: __dirname + "/build",
-        port: 3000
+        contentBase: "./build"
     }
 }
