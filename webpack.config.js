@@ -1,17 +1,33 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-
+const APP_NAME = 'app';
 
 module.exports = {
 
   /**
-   * Set out context directory
+   * Set out context directory for resolving entry points and loaders from configuration.
+   * https://webpack.js.org/configuration/entry-context/#context
    */
-  context: __dirname + "/app",
+  context: __dirname + "/" + APP_NAME,
 
+  /**
+   * Resolve
+   * Configure how modules are resolved.
+   * https://webpack.js.org/configuration/resolve/#resolve
+   */
   resolve: {
-    extensions: ['.ts', '.js', '.json', '.scss'],
-    modules: [__dirname + "/app", 'node_modules']
+
+    /**
+     * An array of extensions that should be used to resolve modules
+     * https://webpack.js.org/configuration/resolve/#resolve-extensions
+     */
+    extensions: ['.ts', '.js', '.scss'],
+    /**
+     * Handle modules resolution, first looking through app resource, then node_modules
+     * Tell webpack what directories should be searched when resolving modules.
+     * https://webpack.js.org/configuration/resolve/#resolve-modules
+     */
+    modules: [__dirname + "/" + APP_NAME, 'node_modules']
   },
 
 
