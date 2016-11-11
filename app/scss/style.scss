@@ -1,4 +1,8 @@
-@import "reset";
+/*
+   ==== Demo styles ======
+*/
+
+
 
 body {
   font-family: sans-serif, Arial;
@@ -12,13 +16,14 @@ a {
 h1 {
   font-size: 3em;
   font-weight: lighter;
-  margin: 2em 0 4em 0;
+  margin: 1em 0 1em 0;
   color: #666;
 }
 
 .container {
   margin: 0 auto;
   width: 60em;
+  display: flex;
 }
 
 .header {
@@ -27,31 +32,40 @@ h1 {
   left: 0;
   width: 100%;
   height: 4em;
-  display: flex;
-  align-items: center;
-  align-content: center;
   background-color: #a5277e;
+
+  .page-name {
+    direction: rtl;
+    flex-grow: 1;
+    align-self: center;
+    color: #da86c0;
+  }
 
   nav {
     ul {
       list-style: none;
+      margin:0;
+      padding: 0;
+      display: flex;
 
       a {
-        display: block;
+        display: flex;
+        align-items: center;
         text-decoration: none;
-        padding: 5px;
+        padding: 0 10px;
+        height: 4em;
         color: #fff;
-      }
-      li {
-        display: inline-block;
-
+        &.active,
+        &:hover {
+          background: #af5d95;
+        }
       }
     }
   }
 }
 
 .main {
-  margin: 4em 0 4em 0;
+  margin: 5em 0 4em 0;
 }
 
 

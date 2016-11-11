@@ -3,17 +3,20 @@
         <div class="container">
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a [routerLink]="['./home']"  routerLinkActive="active">Home</a></li>
+                <li><a [routerLink]="['./about']" routerLinkActive="active">About</a></li>
             </ul>
         </nav>
+            <div class="page-name">
+                Angular2 & Webpack2
+            </div>
         </div>
     </header>
 
 
     <main class="main">
         <div class="container">
-        <h1>Angular2 & Webpack2</h1>
+            <router-outlet></router-outlet>
         </div>
     </main>
 
